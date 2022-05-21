@@ -10,22 +10,22 @@ from PIL import Image
 np.random.seed(123)
 import warnings
 import keras
-from keras.layers import Dense, Dropout,Input,Average,Conv2DTranspose,SeparableConv2D,dot,UpSampling2D,Add, Flatten,Concatenate,Multiply,Conv2D, MaxPooling2D,Activation,AveragePooling2D, ZeroPadding2D,GlobalAveragePooling2D,multiply,DepthwiseConv2D,ZeroPadding2D,GlobalAveragePooling2D,concatenate ,Lambda
-from keras.initializers import RandomNormal
+from tensorflow.keras.layers import Dense, Dropout,Input,Average,Conv2DTranspose,SeparableConv2D,dot,UpSampling2D,Add, Flatten,Concatenate,Multiply,Conv2D, MaxPooling2D,Activation,AveragePooling2D, ZeroPadding2D,GlobalAveragePooling2D,multiply,DepthwiseConv2D,ZeroPadding2D,GlobalAveragePooling2D,concatenate ,Lambda
+from tensorflow.keras.initializers import RandomNormal
 
-from keras import backend as K
+from tensorflow.keras import backend as K
 from tensorflow.keras.layers import BatchNormalization
 import tensorflow as tf
-from keras.optimizers import Adam
+from tensorflow.keras.optimizers import Adam
 import numpy as np
-from keras.layers.advanced_activations import LeakyReLU
-from keras.models import Model
+from tensorflow.keras.layers.advanced_activations import LeakyReLU
+from tensorflow.keras.models import Model
 from tqdm import tqdm_notebook as tqdm
 import cv2
 from sklearn.utils import shuffle
 import tifffile as tif
 from sklearn.model_selection import train_test_split
-from keras.optimizers import Adam, Nadam
+from tensorflow.keras.optimizers import Adam, Nadam
 from glob import glob
 from sklearn.utils import shuffle
 import skimage.io
@@ -146,7 +146,7 @@ def DSup1(x, var):
     d = UpSampling2D(var)(d)
     return d
 
-#Keras
+#tensorflow.keras
 
 
 def msrf(input_size=(256,256,3),input_size_2=(256,256,1)):
@@ -248,16 +248,16 @@ def msrf(input_size=(256,256,3),input_size_2=(256,256,1)):
 
     
     d0 = Conv2D(32,kernel_size=(1,1),strides=(1,1),padding='same')(n23)
-    ss = keras.layers.UpSampling2D(size=(2, 2), data_format=None, interpolation='bilinear')(d0)
+    ss = tensorflow.keras.layers.UpSampling2D(size=(2, 2), data_format=None, interpolation='bilinear')(d0)
     ss = resblock(ss,32,32)
     c3 = Conv2D(1, kernel_size=(1,1),strides=(1,1),padding='same')(n33)
-    c3 = keras.layers.UpSampling2D(size=(4, 4), data_format=None, interpolation='bilinear')(c3)
+    c3 = tensorflow.keras.layers.UpSampling2D(size=(4, 4), data_format=None, interpolation='bilinear')(c3)
     ss = Conv2D(16,kernel_size=(1,1),strides=(1,1),padding='same')(ss)
     ss = gsc(ss,c3,32,32)
     ss = resblock(ss,16,16)
     ss = Conv2D(8,kernel_size=(1,1),strides=(1,1),padding='same')(ss)
     c4 = Conv2D(1, kernel_size=(1,1),strides=(1,1),padding='same')(n43)
-    c4 = keras.layers.UpSampling2D(size=(8, 8), data_format=None, interpolation='bilinear')(c4)
+    c4 = tensorflow.keras.layers.UpSampling2D(size=(8, 8), data_format=None, interpolation='bilinear')(c4)
     ss = gsc(ss,c4,16,16)
     ss = resblock(ss,8,8)
     ss = Conv2D(4,kernel_size=(1,1),strides=(1,1),padding='same')(ss)
