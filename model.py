@@ -18,7 +18,7 @@ from tensorflow.keras.layers import BatchNormalization
 import tensorflow as tf
 from tensorflow.keras.optimizers import Adam
 import numpy as np
-from tensorflow.keras.layers.advanced_activations import LeakyReLU
+from keras.layers.advanced_activations import LeakyReLU
 from tensorflow.keras.models import Model
 from tqdm import tqdm_notebook as tqdm
 import cv2
