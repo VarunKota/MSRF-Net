@@ -14,7 +14,7 @@ from keras.layers import Dense, Dropout,Input,Average,Conv2DTranspose,SeparableC
 from keras.initializers import RandomNormal
 
 from keras import backend as K
-from keras.layers.normalization import BatchNormalization
+from tensorflow.keras.layers import BatchNormalization
 import tensorflow as tf
 from keras.optimizers import Adam
 import numpy as np
