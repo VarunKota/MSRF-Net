@@ -33,8 +33,8 @@ from skimage.transform import rescale, resize, downscale_local_mean
 from skimage.color import rgb2gray
 gpu_options = tf.compat.v1.GPUOptions(per_process_gpu_memory_fraction=1.0)
 config = tf.compat.v1.ConfigProto()
-#config.gpu_options.allow_growth = True
-os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
+config.gpu_options.allow_growth = True
+#os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
 sess = tf.compat.v1.Session()
 def spatial_att_block(x,intermediate_channels):
     out = Conv2D(intermediate_channels,kernel_size=(1,1),strides=(1,1),padding='same')(x)
